@@ -1,1 +1,1 @@
-# Job Organizatio Extension imported from BlueJ 
+# Job Organization Extension imported from BlueJ 
