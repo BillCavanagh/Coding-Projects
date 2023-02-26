@@ -25,6 +25,7 @@ public class Board {
         return false;
     }
     public void determineStartingPiece(int row, int col){
+        // TODO implemnt king, bishop, queen and knight classes
         switch (row){
             case 0: // black pieces
             switch(col){
