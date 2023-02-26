@@ -12,7 +12,6 @@ public class Rook extends DefaultPiece{
         super(color,Piece.ROOK,row,col);
         this.hasMoved = false;
     }
-    
     public HashSet<Move> getPossibleMoves(Board board){
         // TODO castling case, king discovery check case
         // top left = 0,0 

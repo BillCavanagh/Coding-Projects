@@ -24,6 +24,16 @@ public class Board {
         }
         return false;
     }
+    
+    public DefaultPiece getPiece(int row, int col){
+        return board[row][col];
+    }
+    public void setPiece(DefaultPiece piece, int row, int col){
+        board[row][col] = piece;
+    }
+    public void removePiece(int row, int col){
+        board[row][col] = null;
+    }
     public void determineStartingPiece(int row, int col){
         // TODO implemnt king, bishop, queen and knight classes
         switch (row){
@@ -34,7 +44,7 @@ public class Board {
                 case 1: case 6: // black knights
                 board[row][col] = new Rook(Color.BLACK,row,col); break;
                 case 2: case 5: // black bishops
-                board[row][col] = new Rook(Color.BLACK,row,col); break;
+                board[row][col] = new Bishop(Color.BLACK,row,col); break;
                 case 3: // black queen
                 board[row][col] = new Rook(Color.BLACK,row,col); break;
                 case 4: // black king
@@ -47,14 +57,14 @@ public class Board {
             board[row][col] = null; break;
             case 6: // white pawns
             board[row][col] = new Pawn(Color.WHITE,row,col); break;
-            case 7: // white pieces
+            case 7: // white piecess
             switch(col){
                 case 0: case 7: // white rooks
                 board[row][col] = new Rook(Color.WHITE,row,col); break;
                 case 1: case 6: // white knights
                 board[row][col] = new Rook(Color.WHITE,row,col); break;
                 case 2: case 5: // white bishops
-                board[row][col] = new Rook(Color.WHITE,row,col); break;
+                board[row][col] = new Bishop(Color.WHITE,row,col); break;
                 case 3: // white queen
                 board[row][col] = new Rook(Color.WHITE,row,col); break;
                 case 4: // white king
@@ -70,15 +80,6 @@ public class Board {
                 determineStartingPiece(row, col);
             }
         }
-    }
-    public DefaultPiece getPiece(int row, int col){
-        return board[row][col];
-    }
-    public void setPiece(DefaultPiece piece, int row, int col){
-        board[row][col] = piece;
-    }
-    public void removePiece(int row, int col){
-        board[row][col] = null;
     }
     @Override
     public String toString(){
@@ -99,7 +100,7 @@ public class Board {
     public static void main(String[] args) {
         Board board = new Board();
         System.out.println(board);
-        HashSet<Move> moves = board.getPiece(1,1).getPossibleMoves(board);
+        HashSet<Move> moves = board.getPiece(1,2).getPossibleMoves(board);
         for (Move move : moves){
             System.out.println(move);
         }
