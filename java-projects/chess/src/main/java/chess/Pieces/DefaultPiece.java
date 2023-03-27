@@ -1,6 +1,7 @@
 package chess.Pieces;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import chess.Board;
 import chess.Color;
@@ -32,6 +33,6 @@ public abstract class DefaultPiece {
         this.col = col;
     }
    
-    public abstract HashSet<Move> getPossibleMoves(Board board);
+    public abstract Set<Move> getPossibleMoves(Board board);
     public abstract String toString();
 }   

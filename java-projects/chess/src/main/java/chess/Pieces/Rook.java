@@ -1,6 +1,7 @@
 package chess.Pieces;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import chess.Board;
 import chess.Color;
@@ -12,7 +13,8 @@ public class Rook extends DefaultPiece{
         super(color,Piece.ROOK,row,col);
         this.hasMoved = false;
     }
-    public HashSet<Move> getPossibleMoves(Board board){
+    @Override
+    public Set<Move> getPossibleMoves(Board board){
         // TODO castling case, king discovery check case
         // top left = 0,0 
         HashSet<Move> possibleMoves = new HashSet<>();

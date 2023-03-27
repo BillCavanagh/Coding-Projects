@@ -23,7 +23,7 @@ public class Pawn extends DefaultPiece {
     @Override
     public HashSet<Move> getPossibleMoves(Board board) {
         // TODO implement en passant
-        // forward for a pawn is adding 1 for black, subtracting 1 for white
+        // forward for a pawn is adding 1 to the row for black, subtracting 1 for white
         HashSet<Move> possibleMoves = new HashSet<>();
         Move forwardOne = moveMaker(0,1);
         Move forwardTwo = moveMaker(0,2);
