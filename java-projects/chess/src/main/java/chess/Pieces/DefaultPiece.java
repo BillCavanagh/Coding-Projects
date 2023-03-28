@@ -11,11 +11,13 @@ public abstract class DefaultPiece {
     protected Piece piece;
     protected int row;
     protected int col;
+    protected Set<Move> possibleMoves;
     public DefaultPiece(Color color, Piece piece, int row, int col){
         this.color = color;
         this.piece = piece;
         this.row = row;
         this.col = col;
+        this.possibleMoves = new HashSet<>();
     }
     public Color getColor(){
         return color;
@@ -31,6 +33,9 @@ public abstract class DefaultPiece {
     }
     public void setCol(int col){
         this.col = col;
+    }
+    public Set<Move> getPossibleMoves(){
+        return this.possibleMoves;
     }
    
     public abstract Set<Move> getPossibleMoves(Board board);

@@ -1,5 +1,6 @@
 package chess.Pieces;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import chess.Board;
@@ -12,11 +13,19 @@ public class Queen extends DefaultPiece{
     }
     @Override
     public Set<Move> getPossibleMoves(Board board){
+        possibleMoves = new HashSet<>();
         Rook rook = new Rook(this.color,this.row,this.col);
         Bishop bishop = new Bishop(this.color,this.row,this.col);
-        Set<Move> possibleMoves = rook.getPossibleMoves(board);
+        possibleMoves.addAll(rook.getPossibleMoves(board));
         possibleMoves.addAll(bishop.getPossibleMoves(board));
         return possibleMoves;
+    }
+    @Override
+    public Set<Move> getPossibleMoves() {
+        if (this.possibleMoves.size() == 0){
+            this.possibleMoves = getPossibleMoves();
+        }
+        return this.possibleMoves;
     }
     @Override
     public String toString() {

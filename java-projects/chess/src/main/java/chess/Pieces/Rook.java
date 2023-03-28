@@ -12,14 +12,14 @@ public class Rook extends DefaultPiece{
     public Rook(Color color, int row, int col){
         super(color,Piece.ROOK,row,col);
         this.hasMoved = false;
+        this.possibleMoves = new HashSet<>();
     }
     @Override
     public Set<Move> getPossibleMoves(Board board){
         // TODO castling case, king discovery check case
         // top left = 0,0 
-        HashSet<Move> possibleMoves = new HashSet<>();
         for (int row = this.row+1; row < Board.ROWS; row++ ){ // // check vertical down
-            if (board.checkAvailable(row, this.col)){
+            if (board.checkAvailable(this.color,row, this.col)){
                 possibleMoves.add(new Move(row,this.col));
             }
             else{
@@ -30,7 +30,7 @@ public class Rook extends DefaultPiece{
             }
         }
         for (int row = this.row-1; row >= 0; row-- ){ // check vertical up
-            if (board.checkAvailable(row, this.col)){
+            if (board.checkAvailable(this.color,row, this.col)){
                 possibleMoves.add(new Move(row,this.col));
             }
             else{
@@ -41,7 +41,7 @@ public class Rook extends DefaultPiece{
             }
         }
         for (int col = this.col-1; col >= 0; col-- ){ // check horizontal left
-            if (board.checkAvailable(this.row, col)){
+            if (board.checkAvailable(this.color,this.row, col)){
                 possibleMoves.add(new Move(this.row,col));
             }
             else{
@@ -52,7 +52,7 @@ public class Rook extends DefaultPiece{
             }
         }
         for (int col = this.col+1; col < Board.COLS; col++ ){ // check vertical down
-            if (board.checkAvailable(this.row,col)){
+            if (board.checkAvailable(this.color,this.row,col)){
                 possibleMoves.add(new Move(this.row,col));
             }
             else{
@@ -64,6 +64,19 @@ public class Rook extends DefaultPiece{
         }
         
         return possibleMoves;
+    }
+    public void addPossibleMove(Move move){
+        possibleMoves.add(move);
+    }
+    public boolean getHasMoved(){
+        return hasMoved;
+    }
+    @Override
+    public Set<Move> getPossibleMoves() {
+        if (this.possibleMoves.size() == 0){
+            this.possibleMoves = getPossibleMoves();
+        }
+        return this.possibleMoves;
     }
     @Override
     public String toString() {

@@ -14,41 +14,48 @@ public class Knight extends DefaultPiece{
     @Override
     public Set<Move> getPossibleMoves(Board board) {
         // Knight possible moves are away by 2 in one direction and away by 1 in the other direction, 2 rows/1 col for example
-        Set<Move> possibleMoves = new HashSet<>();
+        possibleMoves = new HashSet<>();
         int currentRow = this.row-2;
-        int currentCol = this.row-1;
-        if (board.checkAvailable(currentRow, currentCol)){ // up 2 left 1
+        int currentCol = this.col-1;
+        if (board.checkAvailable(this.color,currentRow, currentCol)){ // up 2 left 1
             possibleMoves.add(new Move(currentRow, currentCol));
         }
         currentCol += 2;
-        if (board.checkAvailable(currentRow, currentCol)){ // up 2 right 1
+        if (board.checkAvailable(this.color,currentRow, currentCol)){ // up 2 right 1
             possibleMoves.add(new Move(currentRow, currentCol));
         }
         currentRow += 4;
-        if (board.checkAvailable(currentRow, currentCol)){ // down 2 right 1
+        if (board.checkAvailable(this.color,currentRow, currentCol)){ // down 2 right 1
             possibleMoves.add(new Move(currentRow, currentCol));
         }
         currentCol -= 2;
-        if (board.checkAvailable(currentRow, currentCol)){ // down 2 left 1
+        if (board.checkAvailable(this.color,currentRow, currentCol)){ // down 2 left 1
             possibleMoves.add(new Move(currentRow, currentCol));
         }
         currentCol -= 1; currentRow -= 1;
-        if (board.checkAvailable(currentRow, currentCol)){ // down 1 left 2
+        if (board.checkAvailable(this.color,currentRow, currentCol)){ // down 1 left 2
             possibleMoves.add(new Move(currentRow, currentCol));
         }
         currentRow -= 2;
-        if (board.checkAvailable(currentRow, currentCol)){ // up 1 left 2
+        if (board.checkAvailable(this.color,currentRow, currentCol)){ // up 1 left 2
             possibleMoves.add(new Move(currentRow, currentCol));
         }
         currentCol += 4;
-        if (board.checkAvailable(currentRow, currentCol)){ // up 1 right 2
+        if (board.checkAvailable(this.color,currentRow, currentCol)){ // up 1 right 2
             possibleMoves.add(new Move(currentRow, currentCol));
         }
         currentRow += 2;
-        if (board.checkAvailable(currentRow, currentCol)){ // down 1 right 2
+        if (board.checkAvailable(this.color,currentRow, currentCol)){ // down 1 right 2
             possibleMoves.add(new Move(currentRow, currentCol));
         }
         return possibleMoves;
+    }
+    @Override
+    public Set<Move> getPossibleMoves() {
+        if (this.possibleMoves.size() == 0){
+            this.possibleMoves = getPossibleMoves();
+        }
+        return this.possibleMoves;
     }
     @Override
     public String toString() {

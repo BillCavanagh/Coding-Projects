@@ -10,17 +10,18 @@ import chess.Move;
 public class Bishop extends DefaultPiece{
     public Bishop(Color color, int row, int col){
         super(color,Piece.BISHOP,row,col);
+        
     }
     @Override
     public Set<Move> getPossibleMoves(Board board){
         //top left = 0,0
-        HashSet<Move> possibleMoves = new HashSet<>();
+        possibleMoves = new HashSet<>();
         int i = 0;
         while (this.row - i - 1 >= 0 && this.col - i - 1 >= 0){// top left diagonal rows down cols down
             i += 1;
             int row = this.row - i;
             int col = this.col - i;
-            if (board.checkAvailable(row,col)){
+            if (board.checkAvailable(this.color,row,col)){
                 possibleMoves.add(new Move(row,col));
             }
             else{
@@ -36,7 +37,7 @@ public class Bishop extends DefaultPiece{
             i += 1;
             int row = this.row - i;
             int col = this.col + i;
-            if (board.checkAvailable(row,col)){
+            if (board.checkAvailable(this.color,row,col)){
                 possibleMoves.add(new Move(row,col));
             }
             else{
@@ -52,7 +53,7 @@ public class Bishop extends DefaultPiece{
             i += 1;
             int row = this.row + i;
             int col = this.col - i;
-            if (board.checkAvailable(row,col)){
+            if (board.checkAvailable(this.color,row,col)){
                 possibleMoves.add(new Move(row,col));
             }
             else{
@@ -68,7 +69,7 @@ public class Bishop extends DefaultPiece{
             i += 1;
             int row = this.row + i;
             int col = this.col + i;
-            if (board.checkAvailable(row,col)){
+            if (board.checkAvailable(this.color,row,col)){
                 possibleMoves.add(new Move(row,col));
             }
             else{
@@ -81,6 +82,13 @@ public class Bishop extends DefaultPiece{
         }
         
         return possibleMoves;
+    }
+    @Override
+    public Set<Move> getPossibleMoves() {
+        if (this.possibleMoves.size() == 0){
+            this.possibleMoves = getPossibleMoves();
+        }
+        return this.possibleMoves;
     }
     @Override
     public String toString() {

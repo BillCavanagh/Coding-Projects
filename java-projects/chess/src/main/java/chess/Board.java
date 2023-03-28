@@ -19,12 +19,17 @@ public class Board {
     public static char indexToFile(int index){ // index 0 = file a, index 1 = file b ect
         return (char)(97 + index);
     }
-    public boolean checkAvailable(int row, int col){
+    public boolean checkAvailable(Color color,int row, int col){
         if (!this.checkInBounds(row, col)){
             return false;
         }
         if (this.getPiece(row,col) == null){ // if the square is empty or is a piece of a different color it is a valid move
             return true;
+        }
+        else{
+            if (color != this.getPiece(row,col).getColor()){
+                return true;
+            }
         }
         return false;
     }
@@ -80,6 +85,7 @@ public class Board {
         }
     }
     public void init_Board(){
+        
        board = new DefaultPiece[ROWS][COLS];
         for (int row = 0; row < board.length; row++){
             for (int col = 0; col < board[0].length; col++){
