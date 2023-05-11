@@ -21,14 +21,14 @@ public class King extends DefaultPiece{
             DefaultPiece Piece2 = board.getPiece(this.row,this.col-4);
             if (Piece1 instanceof Rook){
                 Rook Rook1 = (Rook) Piece1;
-                if (Rook1.color == this.color && Rook1.getHasMoved() && Rook1.getPossibleMoves().contains(new Move(this.row,this.col))){
+                if (Rook1.color == this.color && Rook1.getHasMoved() && Rook1.getPossibleMoves(board).contains(new Move(this.row,this.col))){
                     possibleMoves.add(new Move(this.row,this.col+2,true));
                     Rook1.addPossibleMove(new Move(this.row,this.col-2,true));
                 }
             }
             if (Piece2 instanceof Rook){
                 Rook Rook2 = (Rook) Piece2;
-                if (Rook2.color == this.color && !Rook2.getHasMoved() && Rook2.getPossibleMoves().contains(new Move(this.row,this.col))){
+                if (Rook2.color == this.color && !Rook2.getHasMoved() && Rook2.getPossibleMoves(board).contains(new Move(this.row,this.col))){
                     possibleMoves.add(new Move(this.row,this.col-2,true));
                     Rook2.addPossibleMove(new Move(this.row,this.col+3,true));
                 }
@@ -56,13 +56,6 @@ public class King extends DefaultPiece{
         }
         checkCastleAvailable(board);
         return possibleMoves;
-    }
-    @Override
-    public Set<Move> getPossibleMoves() {
-        if (this.possibleMoves.size() == 0){
-            this.possibleMoves = getPossibleMoves();
-        }
-        return this.possibleMoves;
     }
     @Override
     public String toString() {

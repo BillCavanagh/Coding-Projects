@@ -72,13 +72,6 @@ public class Rook extends DefaultPiece{
         return hasMoved;
     }
     @Override
-    public Set<Move> getPossibleMoves() {
-        if (this.possibleMoves.size() == 0){
-            this.possibleMoves = getPossibleMoves();
-        }
-        return this.possibleMoves;
-    }
-    @Override
     public String toString() {
         return String.valueOf(piece.shorthand) + color.name().charAt(0);
     }

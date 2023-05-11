@@ -1,6 +1,9 @@
 package chess;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import chess.Pieces.*;
@@ -10,7 +13,14 @@ public class Board {
     private DefaultPiece[][] board;
     public static final int ROWS = 8;
     public static final int COLS = 8;
+    private List<DefaultPiece> whitePieces;
+    private List<DefaultPiece> blackPieces;
+    private Map<DefaultPiece,Move> currentPossibleMoves;
+
     public Board(){
+        this.whitePieces = new ArrayList<>();
+        this.blackPieces = new ArrayList<>();
+        this.currentPossibleMoves = new HashMap<>();
         init_Board();
     }
     public static int indexToRank(int index){ // index 0 = rank 8, index 1 = rank 7 ect
@@ -33,6 +43,26 @@ public class Board {
         }
         return false;
     }
+    public Map<DefaultPiece,Move> determineCurrentPossibleMoves(Color color){
+        Map<DefaultPiece,Move> moves = new HashMap<>();
+        if (color == Color.BLACK){
+            for (DefaultPiece piece : blackPieces){
+                Set<Move> pieceMoves = piece.getPossibleMoves(this);
+                for (Move move : pieceMoves){
+                    moves.put(piece,move);
+                }
+            }
+        }
+        else{
+            for (DefaultPiece piece : blackPieces){
+                Set<Move> pieceMoves = piece.getPossibleMoves(this);
+                for (Move move : pieceMoves){
+                    moves.put(piece,move);
+                }
+            }
+        }
+        return moves;
+    }
     private boolean checkInBounds(int row, int col){
         return row <= 7 && col <= 7 && row >= 0 && col >= 0;
     }
@@ -51,41 +81,40 @@ public class Board {
             case 0: // black pieces
             switch(col){
                 case 0: case 7: // black rooks
-                board[row][col] = new Rook(Color.BLACK,row,col); break;
+                board[row][col] = new Rook(Color.BLACK,row,col); blackPieces.add(board[row][col]); break;
                 case 1: case 6: // black knights
-                board[row][col] = new Knight(Color.BLACK,row,col); break;
+                board[row][col] = new Knight(Color.BLACK,row,col); blackPieces.add(board[row][col]);break;
                 case 2: case 5: // black bishops
-                board[row][col] = new Bishop(Color.BLACK,row,col); break;
+                board[row][col] = new Bishop(Color.BLACK,row,col); blackPieces.add(board[row][col]);break;
                 case 3: // black queen
-                board[row][col] = new Queen(Color.BLACK,row,col); break;
+                board[row][col] = new Queen(Color.BLACK,row,col); blackPieces.add(board[row][col]);break;
                 case 4: // black king
-                board[row][col] = new King(Color.BLACK,row,col); break;
+                board[row][col] = new King(Color.BLACK,row,col); blackPieces.add(board[row][col]); break;
             }
             break;
             case 1: // black pawns
-            board[row][col] = new Pawn(Color.BLACK,row,col); break;
+            board[row][col] = new Pawn(Color.BLACK,row,col); blackPieces.add(board[row][col]);break;
             case 2: case 3: case 4: case 5: // if position starts empty
             board[row][col] = null; break;
             case 6: // white pawns
-            board[row][col] = new Pawn(Color.WHITE,row,col); break;
+            board[row][col] = new Pawn(Color.WHITE,row,col); whitePieces.add(board[row][col]);break;
             case 7: // white piecess
             switch(col){
                 case 0: case 7: // white rooks
-                board[row][col] = new Rook(Color.WHITE,row,col); break;
+                board[row][col] = new Rook(Color.WHITE,row,col); whitePieces.add(board[row][col]); break;
                 case 1: case 6: // white knights
-                board[row][col] = new Knight(Color.WHITE,row,col); break;
+                board[row][col] = new Knight(Color.WHITE,row,col); whitePieces.add(board[row][col]);break;
                 case 2: case 5: // white bishops
-                board[row][col] = new Bishop(Color.WHITE,row,col); break;
+                board[row][col] = new Bishop(Color.WHITE,row,col); whitePieces.add(board[row][col]); break;
                 case 3: // white queen
-                board[row][col] = new Queen(Color.WHITE,row,col); break;
+                board[row][col] = new Queen(Color.WHITE,row,col); whitePieces.add(board[row][col]);break;
                 case 4: // white king
-                board[row][col] = new King(Color.WHITE,row,col); break;
+                board[row][col] = new King(Color.WHITE,row,col); whitePieces.add(board[row][col]);break;
             }
             break;
         }
     }
     public void init_Board(){
-        
        board = new DefaultPiece[ROWS][COLS];
         for (int row = 0; row < board.length; row++){
             for (int col = 0; col < board[0].length; col++){
@@ -109,13 +138,24 @@ public class Board {
         }
         return string;
     }
+    public void gameLoop(){
+        int moveCount = 0;
+        System.out.println(this);
+        System.out.println(whitePieces);
+        while (true){
+            Map<DefaultPiece,Move> whiteMoves = determineCurrentPossibleMoves(Color.WHITE);
+            Map<DefaultPiece,Move> blackMoves = determineCurrentPossibleMoves(Color.BLACK);
+            for (Move move : whiteMoves.values()){
+                System.out.println(move);
+            }
+            if (true){
+                break;
+            }
+        }
+    }
     public static void main(String[] args) {
         Board board = new Board();
-        System.out.println(board);
-        Set<Move> moves = board.getPiece(0,1).getPossibleMoves(board);
-        for (Move move : moves){
-            System.out.println(move);
-        }
+        board.gameLoop();
     }
     
 }

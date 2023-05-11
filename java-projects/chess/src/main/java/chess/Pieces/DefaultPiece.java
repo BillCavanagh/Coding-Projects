@@ -34,9 +34,6 @@ public abstract class DefaultPiece {
     public void setCol(int col){
         this.col = col;
     }
-    public Set<Move> getPossibleMoves(){
-        return this.possibleMoves;
-    }
    
     public abstract Set<Move> getPossibleMoves(Board board);
     public abstract String toString();
