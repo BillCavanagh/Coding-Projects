@@ -18,35 +18,35 @@ public class Knight extends DefaultPiece{
         int currentRow = this.row-2;
         int currentCol = this.col-1;
         if (board.checkAvailable(this.color,currentRow, currentCol)){ // up 2 left 1
-            possibleMoves.add(new Move(currentRow, currentCol));
+            possibleMoves.add(new Move(currentRow, currentCol,this));
         }
         currentCol += 2;
         if (board.checkAvailable(this.color,currentRow, currentCol)){ // up 2 right 1
-            possibleMoves.add(new Move(currentRow, currentCol));
+            possibleMoves.add(new Move(currentRow, currentCol,this));
         }
         currentRow += 4;
         if (board.checkAvailable(this.color,currentRow, currentCol)){ // down 2 right 1
-            possibleMoves.add(new Move(currentRow, currentCol));
+            possibleMoves.add(new Move(currentRow, currentCol,this));
         }
         currentCol -= 2;
         if (board.checkAvailable(this.color,currentRow, currentCol)){ // down 2 left 1
-            possibleMoves.add(new Move(currentRow, currentCol));
+            possibleMoves.add(new Move(currentRow, currentCol,this));
         }
         currentCol -= 1; currentRow -= 1;
         if (board.checkAvailable(this.color,currentRow, currentCol)){ // down 1 left 2
-            possibleMoves.add(new Move(currentRow, currentCol));
+            possibleMoves.add(new Move(currentRow, currentCol,this));
         }
         currentRow -= 2;
         if (board.checkAvailable(this.color,currentRow, currentCol)){ // up 1 left 2
-            possibleMoves.add(new Move(currentRow, currentCol));
+            possibleMoves.add(new Move(currentRow, currentCol,this));
         }
         currentCol += 4;
         if (board.checkAvailable(this.color,currentRow, currentCol)){ // up 1 right 2
-            possibleMoves.add(new Move(currentRow, currentCol));
+            possibleMoves.add(new Move(currentRow, currentCol,this));
         }
         currentRow += 2;
         if (board.checkAvailable(this.color,currentRow, currentCol)){ // down 1 right 2
-            possibleMoves.add(new Move(currentRow, currentCol));
+            possibleMoves.add(new Move(currentRow, currentCol,this));
         }
         return possibleMoves;
     }

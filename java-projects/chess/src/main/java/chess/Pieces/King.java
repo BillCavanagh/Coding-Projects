@@ -21,14 +21,14 @@ public class King extends DefaultPiece{
             DefaultPiece Piece2 = board.getPiece(this.row,this.col-4);
             if (Piece1 instanceof Rook){
                 Rook Rook1 = (Rook) Piece1;
-                if (Rook1.color == this.color && Rook1.getHasMoved() && Rook1.getPossibleMoves(board).contains(new Move(this.row,this.col))){
+                if (Rook1.color == this.color && Rook1.getHasMoved() && Rook1.getPossibleMoves(board).contains(new Move(this.row,this.col,this))){
                     possibleMoves.add(new Move(this.row,this.col+2,true));
                     Rook1.addPossibleMove(new Move(this.row,this.col-2,true));
                 }
             }
             if (Piece2 instanceof Rook){
                 Rook Rook2 = (Rook) Piece2;
-                if (Rook2.color == this.color && !Rook2.getHasMoved() && Rook2.getPossibleMoves(board).contains(new Move(this.row,this.col))){
+                if (Rook2.color == this.color && !Rook2.getHasMoved() && Rook2.getPossibleMoves(board).contains(new Move(this.row,this.col,this))){
                     possibleMoves.add(new Move(this.row,this.col-2,true));
                     Rook2.addPossibleMove(new Move(this.row,this.col+3,true));
                 }
@@ -41,17 +41,17 @@ public class King extends DefaultPiece{
         possibleMoves = new HashSet<>();
         for (int col = this.col-1; col <= this.col +1; col ++){ // check upper
             if (board.checkAvailable(this.color,this.row-1, col)){
-                possibleMoves.add(new Move(this.row-1,col));
+                possibleMoves.add(new Move(this.row-1,col,this));
             }
         }
         for (int col = this.col-1; col <= this.col +1; col+=2){ // check horizontal
             if (board.checkAvailable(this.color,this.row, col)){
-                possibleMoves.add(new Move(this.row,col));
+                possibleMoves.add(new Move(this.row,col,this));
             }
         }
         for (int col = this.col-1; col <= this.col +1; col ++){ // check lower
             if (board.checkAvailable(this.color,this.row+1, col)){
-                possibleMoves.add(new Move(this.row+1,col));
+                possibleMoves.add(new Move(this.row+1,col,this));
             }
         }
         checkCastleAvailable(board);

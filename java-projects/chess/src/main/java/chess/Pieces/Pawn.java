@@ -16,7 +16,7 @@ public class Pawn extends DefaultPiece {
     public Move moveMaker(int spacesHorizontal, int spacesVertical){
         if (color == Color.WHITE){
             if (row-spacesVertical >= 0 && row-spacesVertical < 8 && col+spacesHorizontal >= 0 && col+spacesHorizontal < 8){
-                return new Move(this.row-spacesVertical,this.col+spacesHorizontal);
+                return new Move(this.row-spacesVertical,this.col+spacesHorizontal,this);
             }
             else{
                 return null;
@@ -24,7 +24,7 @@ public class Pawn extends DefaultPiece {
         }
         else{
             if (row+spacesVertical >= 0 && row+spacesVertical < 8 && col+spacesHorizontal >= 0 && col+spacesHorizontal < 8){
-                return new Move(this.row+spacesVertical,this.col+spacesHorizontal);
+                return new Move(this.row+spacesVertical,this.col+spacesHorizontal,this);
             }
             else{
                 return null;

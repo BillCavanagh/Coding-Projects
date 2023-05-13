@@ -1,12 +1,16 @@
 package chess;
 
+import chess.Pieces.DefaultPiece;
+
 public class Move {
     public int row;
     public int col;
+    public DefaultPiece piece;
     public boolean isCastle;
-    public Move(int row, int col){
+    public Move(int row, int col, DefaultPiece piece){
         this.row = row;
         this.col = col;
+        this.piece = piece;
     }
     public Move(int row, int col,boolean isCastle){
         this.row = row;
@@ -23,7 +27,13 @@ public class Move {
         return isCastle;
     }
     public String toString(){
-        return Board.indexToFile(col) + String.valueOf(Board.indexToRank(row));
+        return piece.getShorthand() + Board.indexToFile(col) + String.valueOf(Board.indexToRank(row));
+    }
+    public void setRow(int row){
+        this.row = row;
+    }
+    public void setCol(int col){
+        this.col = col;
     }
     @Override
     public boolean equals(Object obj) {

@@ -138,24 +138,8 @@ public class Board {
         }
         return string;
     }
-    public void gameLoop(){
-        int moveCount = 0;
-        System.out.println(this);
-        System.out.println(whitePieces);
-        while (true){
-            Map<DefaultPiece,Move> whiteMoves = determineCurrentPossibleMoves(Color.WHITE);
-            Map<DefaultPiece,Move> blackMoves = determineCurrentPossibleMoves(Color.BLACK);
-            for (Move move : whiteMoves.values()){
-                System.out.println(move);
-            }
-            if (true){
-                break;
-            }
-        }
-    }
     public static void main(String[] args) {
-        Board board = new Board();
-        board.gameLoop();
+
     }
     
 }

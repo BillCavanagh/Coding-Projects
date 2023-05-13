@@ -22,11 +22,11 @@ public class Bishop extends DefaultPiece{
             int row = this.row - i;
             int col = this.col - i;
             if (board.checkAvailable(this.color,row,col)){
-                possibleMoves.add(new Move(row,col));
+                possibleMoves.add(new Move(row,col,this));
             }
             else{
                 if(board.getPiece(row, col).getColor() != this.color){ 
-                    possibleMoves.add(new Move(row,col));
+                    possibleMoves.add(new Move(row,col,this));
                 }
                 break;
             }
@@ -38,11 +38,11 @@ public class Bishop extends DefaultPiece{
             int row = this.row - i;
             int col = this.col + i;
             if (board.checkAvailable(this.color,row,col)){
-                possibleMoves.add(new Move(row,col));
+                possibleMoves.add(new Move(row,col,this));
             }
             else{
                 if(board.getPiece(row, col).getColor() != this.color){ 
-                    possibleMoves.add(new Move(row,col));
+                    possibleMoves.add(new Move(row,col,this));
                 }
                 break;
             }
@@ -54,11 +54,11 @@ public class Bishop extends DefaultPiece{
             int row = this.row + i;
             int col = this.col - i;
             if (board.checkAvailable(this.color,row,col)){
-                possibleMoves.add(new Move(row,col));
+                possibleMoves.add(new Move(row,col,this));
             }
             else{
                 if(board.getPiece(row, col).getColor() != this.color){ 
-                    possibleMoves.add(new Move(row,col));
+                    possibleMoves.add(new Move(row,col,this));
                 }
                 break;
             }
@@ -70,11 +70,11 @@ public class Bishop extends DefaultPiece{
             int row = this.row + i;
             int col = this.col + i;
             if (board.checkAvailable(this.color,row,col)){
-                possibleMoves.add(new Move(row,col));
+                possibleMoves.add(new Move(row,col,this));
             }
             else{
                 if(board.getPiece(row, col).getColor() != this.color){ 
-                    possibleMoves.add(new Move(row,col));
+                    possibleMoves.add(new Move(row,col,this));
                 }
                 break;
             }
