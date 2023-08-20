@@ -7,3 +7,6 @@
 [submodule "Worlde-Solver"]
 	path = Worlde-Solver
 	url = https://github.com/BillCavanagh/Wordle-Solver.git
+[submodule "python-projects/Wordle-Solver"]
+	path = python-projects/Wordle-Solver
+	url = https://github.com/BillCavanagh/Wordle-Solver.git
