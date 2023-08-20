@@ -1,1 +1,1 @@
-# Some code I made while learning other languages (c++) or some code I made for fun to improve my programming skills. Anything "finished" is put in here to see how much I've worked with individual languages 
+# Some code I made while learning other languages (c++) or some code I made for fun to improve my programming skills. Code from other repos is put here to see how much I've worked with individual languages 
