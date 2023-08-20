@@ -10,3 +10,6 @@
 [submodule "python-projects/Wordle-Solver"]
 	path = python-projects/Wordle-Solver
 	url = https://github.com/BillCavanagh/Wordle-Solver.git
+[submodule "java-projects/Smart-Chess"]
+	path = java-projects/Smart-Chess
+	url = https://github.com/BillCavanagh/Smart-Chess.git
