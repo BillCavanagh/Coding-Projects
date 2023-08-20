@@ -1,1 +1,1 @@
-# Project intended to function as a chess game with a javafx GUI
+# Temporary files uploaded here on August 20th, 2023, for tracking language use through linguist library
