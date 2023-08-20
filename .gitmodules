@@ -1,0 +1,6 @@
+[submodule "java-project/Smart-Chess"]
+	path = java-project/Smart-Chess
+	url = https://github.com/BillCavanagh/Smart-Chess.git
+[submodule "Wordle-Solver"]
+	path = Wordle-Solver
+	url = https://github.com/BillCavanagh/Wordle-Solver.git
