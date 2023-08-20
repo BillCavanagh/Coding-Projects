@@ -4,3 +4,6 @@
 [submodule "Wordle-Solver"]
 	path = Wordle-Solver
 	url = https://github.com/BillCavanagh/Wordle-Solver.git
+[submodule "Worlde-Solver"]
+	path = Worlde-Solver
+	url = https://github.com/BillCavanagh/Wordle-Solver.git
