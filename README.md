@@ -1,1 +1,1 @@
-# Some code I made while learning other languages (c++/html/css/javascript) or some code I made for fun to improve my programming skills. Code from other repos is put here to see how much I've worked with individual languages. Note: html/css inflated due to the nature of the languages 
+# Some code I made while learning other languages (c++/html/css/javascript) or some code I made for fun to improve my programming skills. Code from other repos is put here to see how much I've worked with individual languages. 
