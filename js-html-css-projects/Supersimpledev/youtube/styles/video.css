@@ -33,6 +33,7 @@
   grid-template-columns: 50px 1fr;
 }
 .video-grid{
+  width: 200px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 16px;
