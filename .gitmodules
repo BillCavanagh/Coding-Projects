@@ -3,4 +3,4 @@
 	url = https://github.com/BillCavanagh/Wordle-Solver.git
 [submodule "java-projects/Smart-Chess"]
 	path = java-projects/Smart-Chess
-	url = https://github.com/BillCavanagh/Smart-Chess.git
+	url = https://github.com/BillCavanagh/Smart-cChess.git
